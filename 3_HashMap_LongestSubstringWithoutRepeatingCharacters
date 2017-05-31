@@ -1,0 +1,34 @@
+import java.util.*;
+import java.util.concurrent.CyclicBarrier;
+
+/**
+ * Created by Qiang Pan on 5/30/2017.
+ */
+public class Longest {
+
+    public static void main(String[] args)
+    {
+        //String a="dvdf";
+        String a="aab";
+        int length=lengthOfLongestSubstring(a);
+        System.out.println(length);
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+       Map<Character,Integer> map = new HashMap<>();
+       int maxLen=0;
+       int start=0;
+       for(int i=0;i<s.length();i++)
+       {
+           char temp =s.charAt(i);
+           if(map.containsKey(temp)&& map.get(temp)>=start)
+           {
+               start=map.get(temp)+1;
+
+           }
+           map.put(temp,i);
+           maxLen=Math.max(maxLen,i-start+1);
+       }
+       return maxLen;
+    }
+}
