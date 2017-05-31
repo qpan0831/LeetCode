@@ -1,0 +1,55 @@
+import java.util.*;
+import java.util.concurrent.CyclicBarrier;
+
+/**
+ * Created by Qiang Pan on 5/30/2017.
+ */
+public class Longest {
+
+    public static void main(String[] args)
+    {
+        //String a="dvdf";
+        //String a="pwwkew";
+        String a="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~  abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCD";
+        int length=lengthOfLongestSubstring(a);
+        System.out.println(length);
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        Map<Integer,Character> map = new HashMap<>();
+        int maxLength=0;
+        int tempLen=0;
+        if(s==null||s.isEmpty())
+        {
+            return 0;
+        }
+        int counter=0;
+        for(int i=0;i<s.length();i++)
+        {
+
+            char tempChar = s.charAt(i);
+            if(map.containsValue(tempChar)&&i>counter)
+            {
+
+                while(map.containsValue(tempChar))
+                {
+                    map.remove(counter);
+                    counter++;
+                }
+                //counter=0;
+                map.put(i,tempChar);
+                tempLen=map.size();
+                maxLength= tempLen>maxLength?tempLen:maxLength;
+
+            }
+            else
+            {
+                map.put(i,tempChar);
+                tempLen=map.size();
+                maxLength= tempLen>maxLength?tempLen:maxLength;
+            }
+
+        }
+        return maxLength;
+    }
+}
