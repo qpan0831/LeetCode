@@ -1,0 +1,53 @@
+/**
+ * Created by Qiang Pan on 5/31/2017.
+ */
+public class LongestPalindrome {
+
+    public static String longestPalindrome(String s) {
+
+        if(s==null||s.isEmpty()||s.length()==1)
+            return s;
+        if(s.equals(new StringBuilder(s).reverse().toString()))
+            return s;
+    String result="";
+    String tempRes="";
+        for(int i=0;i<s.length();i++)
+    {
+        String res1="";
+        String res2="";
+        res1=extendPalindrome(s,i,i+1);
+        res2=extendPalindrome(s,i-1,i+1);
+        tempRes= res1.length()>res2.length()?res1:res2;
+        result=result.length()>tempRes.length()?result:tempRes;
+
+    }
+        if(result.isEmpty())
+    {
+        result=result+s.charAt(0);
+    }
+        return result;
+}
+
+    public static String extendPalindrome(String s,int left,int right)
+    {
+        String str="";
+        while (left>=0&&right<s.length()&&s.charAt(left)==s.charAt(right))
+        {
+            str=s.substring(left,right+1);
+            left--;
+            right++;
+        }
+        return str;
+    }
+    public static void main(String[] args)
+    {
+        //String s="abcda";
+        //char a=s.charAt(s.length()-1);
+
+        String s="aaa";
+        //String s="civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittle";
+        String test=longestPalindrome(s);
+        System.out.println(test);
+    }
+
+}
