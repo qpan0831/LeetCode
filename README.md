@@ -8,3 +8,5 @@ May 29th 2017:  Two Sum  & Add Two Numbers
                 
 May 31th 2017: Longest Substring without Repeating Characters:
                 Use both HashSet and HashMap to approach.
+                
+Jun 2nd 2017: After couple days of coding, finished Longest Palindromic Substring!
