@@ -10,3 +10,6 @@ May 31th 2017: Longest Substring without Repeating Characters:
                 Use both HashSet and HashMap to approach.
                 
 Jun 2nd 2017: After couple days of coding, finished Longest Palindromic Substring!
+Jun 3rd 2017: Reverse Integer
+Jun 5rd 2017: Palindrome Number 
+Jun 6th 2017: Finished ATOI 
