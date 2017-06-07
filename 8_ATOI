@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+
+/**
+ * Created by Qiang Pan on 6/6/2017.
+ */
+public class AsciiToInteger {
+    public int myAtoi(String str) {
+        if(str.length()==0||str.isEmpty())
+            return 0;
+        if(str.length()==1)
+        {
+            if(Character.isDigit(str.charAt(0)))
+            {
+                return (str.charAt(0)-'0');
+            }
+            else
+                return 0;
+        }
+        String a=str.trim();
+        long result=0;
+        int sign=1;
+        int i=0;
+        if(a.charAt(0)=='-') {
+            sign = -1;
+            i++;
+        }
+        if(a.charAt(0)=='+') {
+            sign = 1;
+            i++;
+        }
+        while(i<a.length())
+        {
+            if(Character.isDigit(a.charAt(i)))
+            {
+
+                result = result * 10 + (a.charAt(i) - '0');
+                if (result*sign > Integer.MAX_VALUE)
+                    return Integer.MAX_VALUE;
+                if(result*sign<Integer.MIN_VALUE)
+                    return Integer.MIN_VALUE;
+                i++;
+
+            }
+            else
+            {
+                return (int)result*sign;
+            }
+
+        }
+        result=result*sign;
+        return (int)result;
+    }
+
+    public static void main(String[] args){
+        String test="-2147483648";
+        AsciiToInteger a = new AsciiToInteger();
+       int num=a.myAtoi(test);
+       System.out.println(num);
+
+    }
+
+}
