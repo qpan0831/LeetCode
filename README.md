@@ -13,3 +13,6 @@ Jun 2nd 2017: After couple days of coding, finished Longest Palindromic Substrin
 Jun 3rd 2017: Reverse Integer
 Jun 5rd 2017: Palindrome Number 
 Jun 6th 2017: Finished ATOI 
+
+
+Algorithm info:http://www.cs.princeton.edu/~wayne/kleinberg-tardos/
