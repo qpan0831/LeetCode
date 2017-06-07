@@ -1,0 +1,29 @@
+public class Solution {
+    public int maxArea(int[] height) {
+                int[] h = height;
+        if(h.length==0)
+            return 0;
+        if(h.length==2)
+            return h[0]*h[1];
+        int area=0;
+        int len=0;
+        for(int i=0;i<h.length;i++)
+        {
+            int tempArea = 0;
+            for(int j=1;j<h.length;j++)
+            {
+                len=j-i;
+                if(len>Math.max(h[i],h[j])) {
+                    tempArea = len * Math.min(h[i], h[j]);
+                    area = tempArea > area ? tempArea : area;
+                }
+                else
+                {
+                    tempArea= len * Math.min(h[i], h[j]);
+                    area = tempArea > area ? tempArea : area;
+                }
+            }
+        }
+        return area;
+    }
+}
