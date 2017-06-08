@@ -1,0 +1,34 @@
+public class Solution {
+    public String convert(String s, int numRows) {
+        if(s.isEmpty()||s==null)
+        {
+            return s;
+        }
+        StringBuilder[] sb = new StringBuilder[numRows];
+        String res="";
+        char[] str= s.toCharArray();
+        for(int i=0;i<numRows;i++)
+        {
+            sb[i]= new StringBuilder();
+        }
+        int len=s.length();
+        int i=0;
+        while(i<len)
+        {
+            for(int index=0;index<numRows&&i<len;index++)
+            {
+                sb[index].append(str[i++]);
+                
+            }
+            for(int index=numRows-2;index>0&&i<len;index--)
+            {
+                sb[index].append(str[i++]);
+            }
+        }
+        for(int temp=0;temp<numRows;temp++)
+        {
+            res+=sb[temp].toString();
+        }
+        return res;
+    }
+}
