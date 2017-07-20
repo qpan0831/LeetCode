@@ -1,0 +1,26 @@
+/*
+Fixed one variable and use two pointers to move,if target found during the loop, return target, otherwise, return target+difference
+*/
+public class Solution {
+    public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
+        int min_diff=Integer.MAX_VALUE;
+        for(int i=0;i<nums.length-2;i++)
+        {
+            int left=i+1;
+            int right=nums.length-1;
+            while(left<right)
+            {
+                int diff=nums[i]+nums[left]+nums[right]-target;
+                if(diff==0)
+                    return target;
+                min_diff=Math.abs(min_diff)>Math.abs(diff)?diff:min_diff;
+                if(diff>0) 
+                    right--;
+                else
+                    left++;
+            }
+        }
+        return target+min_diff;
+    }
+}
