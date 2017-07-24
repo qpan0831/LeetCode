@@ -1,0 +1,27 @@
+/*
+Used LinkedList as a queue data structure to impliments this alorithim.
+
+*/
+
+public class Solution {
+    public List<String> letterCombinations(String digits) {
+        LinkedList<String> res = new LinkedList<>();
+        if(digits.length()==0 || digits==null)
+            return res;
+        String[] map = new String[]{"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        res.add("");
+        for(int i=0;i<digits.length();i++)
+        {
+            int num=Character.getNumericValue(digits.charAt(i));
+            while(res.peek().length()==i)
+            {
+                String temp = res.remove();
+                for(char ch: map[num].toCharArray())
+                {
+                    res.add(temp+ch);
+                }
+            }
+        }
+
+        return res;}
+}
